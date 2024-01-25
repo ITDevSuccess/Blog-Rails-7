@@ -7,16 +7,23 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <%= link_to "Home", root_path, class: "nav-link active", "aria-current":"page" %>
+          <%= link_to "Home", root_path, class: "nav-link active", "aria-current": "page" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <% if user_signed_in? %>
+            <%#= link_to "Profile", edit_user_registration_path, class: "nav-link" %>
+          <% end %>
         </li>
 
       </ul>
-      <form class="d-flex" role="search">
-        <%= link_to "Add Post", new_blog_post_path, class: "btn btn-outline-success" %>
-      </form>
+      <div class="d-flex" role="search">
+        <% if user_signed_in? %>
+          <%= link_to "Add Post", new_blog_post_path, class: "btn btn-outline-info me-2" %>
+          <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger" %>
+        <% else %>
+          <%= link_to "Log In", new_user_session_path, class: "btn btn-outline-success" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </nav>
