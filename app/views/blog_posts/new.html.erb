@@ -1,0 +1,20 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-md-6 col-sm-3 col-lg-4">
+    <div class="card mt-5">
+      <div class="card-body">
+        <h1 class="text-center mb-3">New Blog Post</h1>
+        <%= form_with model: @blog_post do |form| %>
+          <div class="mb-3">
+            <%= form.label :title, class: 'form-label' %>
+            <%= form.text_field :title, class: 'form-control' %>
+          </div>
+          <div class="mb-3">
+            <%= form.label :body, class: 'form-label'%>
+            <%= form.text_area :body, class: 'form-control'%>
+          </div>
+          <%= form.button "Post", class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

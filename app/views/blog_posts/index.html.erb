@@ -1,7 +1,7 @@
 <h1>This is the BlogPost</h1>
-  <% @blog_posts.each do |blog_post| %>
-    <div>
-      <h2><%= link_to blog_post.title, blog_post_show_path(blog_post), class: "nav-link" %></h2>
-      <%= blog_post.body %>
-    </div>
-  <% end %>
+<% @blog_posts.each do |blog_post| %>
+  <div>
+    <h2><%= link_to blog_post.title, blog_post_show_path(blog_post), class: "nav-link" %></h2>
+    <%= blog_post.body %>
+  </div>
+<% end %>
