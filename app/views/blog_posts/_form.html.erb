@@ -1,0 +1,18 @@
+<%= form_with model: blog_post do |form| %>
+  <% if form.object.errors.any? %>
+    <div class="div">
+      <% form.object.errors.full_messages.each do |message| %>
+        <div class="alert alert-danger"><%= message %></div>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="mb-3">
+    <%= form.label :title, class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :body, class: 'form-label' %>
+    <%= form.text_area :body, class: 'form-control' %>
+  </div>
+  <%= form.button "Post", class: "btn btn-success" %>
+<% end %>
