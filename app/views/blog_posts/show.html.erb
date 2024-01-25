@@ -1,3 +1,15 @@
 <h1><%= @blog_post.title %></h1>
 
+
 <p><%= @blog_post.body %></p>
+
+<div class="mt-3">
+  <div class="row">
+    <div class="col-auto">
+      <%= link_to "Edit", edit_blog_post_path, class: 'btn btn-primary' %>
+    </div>
+    <div class="col-auto">
+      <%= button_to "Delete", @blog_post, method: :delete, class: 'btn btn-danger', data:{turbo_confirm: "Are you sur ?"} %>
+    </div>
+  </div>
+</div>

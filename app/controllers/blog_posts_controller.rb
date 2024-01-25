@@ -35,6 +35,15 @@ class BlogPostsController < ApplicationController
     end
   end
 
+  def destroy
+    @blog_post = BlogPost.find(params[:id])
+    if @blog_post.destroy
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
   def post_params
     params.require(:blog_post).permit('title', 'body')
