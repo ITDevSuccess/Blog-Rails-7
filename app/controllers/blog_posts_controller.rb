@@ -1,8 +1,6 @@
 class BlogPostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
-  # ou
-  # before_action :set_blog_post, except: [:index, :new, :create]
-
 
   def index
     @blog_posts = BlogPost.all
@@ -10,8 +8,8 @@ class BlogPostsController < ApplicationController
 
   def show
     # @blog_post = BlogPost.find(params[:id])
-  # rescue ActiveRecord::RecordNotFound
-  #   redirect_to root_path
+    # rescue ActiveRecord::RecordNotFound
+    #   redirect_to root_path
   end
 
   def new
@@ -50,6 +48,7 @@ class BlogPostsController < ApplicationController
   end
 
   private
+
   def post_params
     params.require(:blog_post).permit('title', 'body')
   end
@@ -57,6 +56,10 @@ class BlogPostsController < ApplicationController
   def set_blog_post
     @blog_post = BlogPost.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-      redirect_to root_path
+    redirect_to root_path
+  end
+
+  def authenticate_user!
+    redirect_to new_user_session_path, alert: "You must sign in ou sign up"
   end
 end
