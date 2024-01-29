@@ -59,7 +59,7 @@ class BlogPostsController < ApplicationController
     redirect_to root_path
   end
 
-  def authenticate_user!
-    redirect_to new_user_session_path, alert: "You must sign in ou sign up"
-  end
+  # def authenticate_user!
+  #   redirect_to new_user_session_path, alert: "You must sign in ou sign up"
+  # end
 end
